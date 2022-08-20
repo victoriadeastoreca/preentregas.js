@@ -1,4 +1,5 @@
 let productosDiv = document.getElementById("productos")
+let carrito = JSON.parse(localStorage.getItem("carrito")) || []
 
 // para mostrar los productos
 function mostrarProductos(array) { 
@@ -56,7 +57,7 @@ function agregarAlCarrito(e) {
     const boton = e.target;
     const idBoton = boton.getAttribute("id");
     // console.log(idBoton)
-    let productoSeleccionado = productosLista.find(producto => producto.id === idBoton)
+    let productoSeleccionado = productosLista.find(producto => producto.id === parseInt(idBoton))
     carrito.push(productoSeleccionado)
     console.log(carrito)
 
@@ -77,7 +78,7 @@ function mostrarCarrito() {
     carrito.forEach(producto => {
         divCarrito.innerHTML += `
             <div class="productoCarrito">
-                <img src=${producto.img}>
+                <img class="tamaño__imagenes" src=${producto.img}>
                 <h2>${producto.name}   $${producto.price}</h2>
                 <button class="botonBorrar" id="${producto.id}">X</button>
             </div>
@@ -95,3 +96,37 @@ function mostrarCarrito() {
     for (botonX of botonBorrar) {
         botonX.addEventListener("click", eliminarProducto)
     }
+
+    mostrarCarrito()
+
+    //vaciar carrito
+    vaciar.addEventListener("click", () => {
+        carrito = []
+        localStorage.clear()
+        divCarrito.innerHTML = ""
+    })
+
+    let terminarCompra = document.createElement("button")
+    terminarCompra.setAttribute("class", "terminarCompra")
+    terminarCompra.innerHTML=("Finalizar compra")
+    divCarrito.append(terminarCompra)
+
+    terminarCompra.addEventListener("click", ()=>{
+        window.location.href="comprar.html"
+    })
+
+
+carrito.length && mostrarCarrito()
+
+
+//ELIMINAR PRODUCTO
+function eliminarProducto(e) {
+    divCarrito.innerHTML = ""
+    const botonX = e.target;
+    const idBotonX = botonX.getAttribute("id");
+    let indexProducto = carrito.findIndex(producto => producto.id === idBotonX)
+    carrito.splice(indexProducto, 1)
+    localStorage.removeItem("carrito")
+    localStorage.setItem("carrito", JSON.stringify(carrito))
+    mostrarCarrito(carrito)
+}
