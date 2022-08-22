@@ -64,7 +64,7 @@ function agregarAlCarrito(e) {
     //storage
     localStorage.setItem("carrito", JSON.stringify(carrito));
 
-    alert("Agregaste " + productoSeleccionado.name + " al carrito")
+    /* alert("Agregaste " + productoSeleccionado.name + " al carrito") */
 
     mostrarCarrito()
 }
@@ -75,28 +75,38 @@ for (boton of botonAgregar) {
 
 //MOSTRAR CARRITO
 function mostrarCarrito() {
+    divCarrito.innerHTML = "";
     carrito.forEach(producto => {
         divCarrito.innerHTML += `
-            <div class="productoCarrito">
-                <img class="tamaño__imagenes" src=${producto.img}>
-                <h2>${producto.name}   $${producto.price}</h2>
-                <button class="botonBorrar" id="${producto.id}">X</button>
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img class="tamaño__imagenes img-fluid rounded-start" src=${producto.img} alt=${producto.name}>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <p class="card-title">${producto.name}</p>
+                            <p class="card-text">Precio $${producto.price}</p>
+                            <button class="boton botonBorrar" id="${producto.id}">  X</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            `
+        `
     })
-    let total = carrito.reduce((acc, curr) => acc + parseInt(curr.price), 0)
-    let totalCompra = document.createElement("p")
+    let total = carrito.reduce((acc, curr) => acc + curr.price, 0)
+    let totalCompra = document.createElement("h2")
     totalCompra.setAttribute("class", "total")
     totalCompra.innerText = ("Total: " + total)
     divCarrito.append(totalCompra)
-}
+
     let botonBorrar = document.getElementsByClassName("botonBorrar")
     // console.log(botonBorrar)
 
     for (botonX of botonBorrar) {
         botonX.addEventListener("click", eliminarProducto)
     }
-
+}
     mostrarCarrito()
 
     //vaciar carrito
@@ -106,14 +116,19 @@ function mostrarCarrito() {
         divCarrito.innerHTML = ""
     })
 
-    let terminarCompra = document.createElement("button")
+    const terminarCompra = document.getElementById("finalizar")
+    terminarCompra.addEventListener("click", ()=>{
+        window.location.href="carrito.html"
+    })
+
+    /* let terminarCompra = document.createElement("button")
     terminarCompra.setAttribute("class", "terminarCompra")
     terminarCompra.innerHTML=("Finalizar compra")
     divCarrito.append(terminarCompra)
 
     terminarCompra.addEventListener("click", ()=>{
-        window.location.href="comprar.html"
-    })
+        window.location.href="carrito.html"
+    }) */
 
 
 carrito.length && mostrarCarrito()
@@ -124,7 +139,7 @@ function eliminarProducto(e) {
     divCarrito.innerHTML = ""
     const botonX = e.target;
     const idBotonX = botonX.getAttribute("id");
-    let indexProducto = carrito.findIndex(producto => producto.id === idBotonX)
+    let indexProducto = carrito.findIndex(producto => producto.id === parseInt(idBotonX))
     carrito.splice(indexProducto, 1)
     localStorage.removeItem("carrito")
     localStorage.setItem("carrito", JSON.stringify(carrito))

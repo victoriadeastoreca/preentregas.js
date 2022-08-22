@@ -73,8 +73,13 @@ article {
   border-color: #2c1717;
   background-image: linear-gradient(to top, #2c1717, #3d2929); }
 
+.botonVaciar{
+  color: #312323;
+  margin-bottom: 0;
+  cursor: pointer;}
+
+
 .card {
-  
   margin: 1rem 0;
   background-color: #b3a699;
   border-radius: 1rem;
@@ -121,6 +126,8 @@ article {
   font-size: 15px; }
 
 /* fin del INDEX */
+
+/* PRODUCTOS */
 .productos__gridContainer {
   display: grid;
   grid-template-columns: 1fr;
@@ -135,7 +142,31 @@ article {
   justify-content: space-between;
   flex-wrap: wrap; }
 
-  /* NUEVO */
+.carrito__gridContainer {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  grid-template-areas: "tituloCarrito tituloCarrito" "carritoProductos botonVaciar"
+  "carritoProductos botonCarrito";
+  grid-gap: 1rem;
+  margin: 0rem 1.5rem;
+  justify-content: space-evenly; }
+
+  .tituloCarrito{
+    grid-area: tituloCarrito;
+    align-items: left;}
+  .carritoProductos{
+    grid-area: carritoProductos;
+    align-items: left;}
+  .div__botonVaciar{
+    grid-area: botonVaciar;
+    align-self: flex-end;
+    justify-self: center; }
+  .div__botonCarrito{
+    grid-area: botonCarrito;
+    align-self: flex-start;
+    justify-self: center;}
+/* FIN PRODUCTOS */
+  /* JS */
   .filtro button {cursor: pointer;}
 
 #productos{
@@ -144,13 +175,38 @@ article {
   justify-content: space-evenly;
   flex-wrap: wrap;}
 
-  #result{
-    text-align: center;}
+#result{
+  text-align: center;}
 
-    .productos__card{
-      width: 23vw;
-    }
+.productos__card{
+  width: 23vw;
+}
 
+/* FIN JS */
+
+/* CARRITO */
+.carrito__gridContainer2 {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  grid-template-areas: "carritoProductos2 botonSeguir" "carritoProductos2 botonFinalizar";
+  grid-gap: 1.5rem;
+  margin: 0rem 1.5rem;
+  justify-content: space-evenly; }
+
+.carritoProductos2{
+  grid-area: carritoProductos2;
+  align-items: left;}
+
+.seguir{
+  grid-area: botonSeguir;
+  align-self: flex-end;
+  justify-self: center; }
+.finalizar{
+  grid-area: botonFinalizar;
+  align-self: flex-start;
+  justify-self: center;
+}
+/* FIN CARRITO */
 
 .flexColumnCenter, .contacto__formas, .contacto__lugar {
   display: flex;
