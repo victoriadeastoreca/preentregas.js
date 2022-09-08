@@ -72,6 +72,13 @@ article {
   border-radius: 1rem;
   border-color: #2c1717;
   background-image: linear-gradient(to top, #2c1717, #3d2929); }
+.botonAlter{
+  padding: 0.4rem;
+  font-family: "Poppins", sans-serif;
+  border-radius: 1rem;
+  color:#2c1717;
+  border-color: #e3e2e9;
+  background-image: linear-gradient(to top, #e3e2e9, #faf9ff)}
 
 .botonVaciar{
   color: #312323;
@@ -207,6 +214,94 @@ article {
   justify-self: center;
 }
 /* FIN CARRITO */
+/* LOG IN */
+.logIn__gridContainer{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr ;
+  grid-template-areas: "login contraNueva registro";
+  grid-gap: 1.5rem;
+  margin: 0rem 1.5rem;
+}
+.div__login{
+  grid-area: login;
+}
+.loginTitulo{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.login form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 1.5rem;
+  gap: 1.5em;
+}
+.login form h2{
+  gap: none;
+}
+.login form input{
+  border-style: none;
+  border-bottom: 1px #010101 solid;
+  width: 20em;
+  text-align: center;
+  padding: 0.5em 0em 0.5em 0em;
+  background-color:  #cebeaf;
+}
+.btns{
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  margin-top: 1em;
+}
+
+#recuperarContrasenia{
+  border-style: none;
+  border-radius: 15px;
+  background-color:  #cebeaf;
+  color: #312323;
+}
+
+#divRegister{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  display: none;
+  grid-area: registro;
+}
+.loginRegistro{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#emailRecuperar{
+  width: 30em;
+  text-align: center;
+}
+#newPassw{
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  grid-area: contraNueva;
+}
+#newPassw input{
+  border-style: none;
+  border-bottom: 1px black solid;
+  width: 20em;
+  text-align: center;
+  padding: 0.5em 0em 0.5em 0em;
+  margin-bottom: 1.5em;
+  background-color:  #cebeaf;
+  color: #312323;
+}
+#cambiarPass{
+  border-style: none;
+  border-radius: 15px;
+  background-color:  #cebeaf;
+  color: #312323;
+}
+/* FIN LOG IN */
 
 .flexColumnCenter, .contacto__formas, .contacto__lugar {
   display: flex;
