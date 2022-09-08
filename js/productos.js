@@ -63,9 +63,6 @@ function agregarAlCarrito(e) {
 
     //storage
     localStorage.setItem("carrito", JSON.stringify(carrito));
-
-    /* alert("Agregaste " + productoSeleccionado.name + " al carrito") */
-
     mostrarCarrito()
 }
 
@@ -74,6 +71,7 @@ for (boton of botonAgregar) {
 }
 
 //MOSTRAR CARRITO
+
 function mostrarCarrito() {
     divCarrito.innerHTML = "";
     carrito.forEach(producto => {
@@ -145,3 +143,4 @@ function eliminarProducto(e) {
     localStorage.setItem("carrito", JSON.stringify(carrito))
     mostrarCarrito(carrito)
 }
+

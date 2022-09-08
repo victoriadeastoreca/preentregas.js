@@ -234,3 +234,51 @@ article {
   width: 45vw;
   height: 38vh;
   border-radius: 2rem; }
+
+  /* NUESTRA HISTORIA */
+.flexColCenterStart, .historia__nosotras, .historia__img, .historia__mision, .historia__vision {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: start; }
+
+.historia__gridContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.5fr;
+  grid-template-areas: "historiaPresentacion historiaPresentacion historiaImg"
+"historiaNosotras historiaNosotras historiaImg"
+"historiaMision historiaVision historiaImg";
+  margin: 2rem;
+  grid-column-gap: 3rem; }
+
+.historia__presentacion {
+  grid-area: historiaPresentacion;
+  margin-top: 1rem; }
+
+.historia__nosotras {
+  grid-area: historiaNosotras;
+  justify-content: center; }
+
+.historia__img {
+  grid-area: historiaImg; }
+
+.historia__mision {
+  grid-area: historiaMision; }
+
+.historia__vision {
+  grid-area: historiaVision; }
+
+main section div img {
+  width: 31vw;
+  border-radius: 2rem; }
+
+.negrita {
+  font-weight: bold; }
+
+/* INFORMACIÓN */
+.información__container {
+  margin: 0 3rem;
+  margin-bottom: 2rem; }
+
+.subrayado {
+  text-decoration: underline; }
