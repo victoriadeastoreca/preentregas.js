@@ -97,11 +97,11 @@
     </main>
     
 
-    <footer class="text-center newsletter">
+    <footer id="newsletter" class="text-center newsletter">
         <p class="información__títulos">Newsletter</p>
         <p class="newsletter__p">Recibí todas las novedades y descuentos exclusivos.</p>
-        <form> 
-            <input placeholder="Email"></input>
+        <form id="formNewsletter"> 
+            <input id="inputEmailNews" type="email" name="email" placeholder="Mail" required pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$"></input>
             <input class="newsletter__button" type="submit" value="Subscribirme"/>           
         </form>
 

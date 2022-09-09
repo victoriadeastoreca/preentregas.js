@@ -8,9 +8,6 @@ const recuperarContraseña = document.getElementById("recuperarContraseña")
 
 let users = JSON.parse(localStorage.getItem("users")) || []
 
-console.log(users)
-
-
 function logIn() {
     let usuarioIngresado = users.find(userU => userU.username === user.value)
 
@@ -46,13 +43,6 @@ class NewUser {
 
 const divRegister = document.querySelector("#divRegister");
 
-function register() {
-    const nuevoUsuario = new NewUser(emailInput.value, inputUser.value, inputPassword.value)
-    users.push(nuevoUsuario)
-    console.log(nuevoUsuario)
-    console.log(users)
-}
-
 registerUser.onclick = (e) => {
     e.preventDefault()
     divRegister.style.display = "flex"
@@ -79,6 +69,42 @@ registerUser.onclick = (e) => {
         (mailExiste || usernameExiste) ? alert("Este usuario ya se encuentra registrado"): nuevoUsuario()
     }
 
+}
+
+let suscriptores = JSON.parse(localStorage.getItem("suscriptores")) || []
+
+const newsletter = document.getElementById("newsletter")
+newsletter.onsubmit = (event) => {
+    event.preventDefault()
+
+    let mailNewsExiste = suscriptores.some((userA) => userA.email === inputEmailNews.value)
+    function nuevoSuscriptor() {
+        const newSuscriptor = new NewSuscriptor(inputEmailNews.value)
+        suscriptores.push(newSuscriptor)
+        console.log(suscriptores)
+        setStorageSus()
+    }
+
+    (mailNewsExiste) ? alert("Este usuario ya se encuentra registrado"): nuevoSuscriptor()
+
+    fetch("https://formsubmit.co/ajax/vickydeastoreca@gmail.com", {
+        method: "POST",
+        body: new FormData(event.target)
+    })
+    .then(res=>res.ok ? res.json() : Promise.reject(res))
+    .then(json => {
+        console.log(json)
+    })
+    .catch(err => {
+        console.log(err)
+    });
+}
+class NewSuscriptor {
+    constructor(email) {
+        this.email = email}}
+
+function setStorageSus(){
+    localStorage.setItem("suscriptores", JSON.stringify(suscriptores))
 }
 
 const recuperarContrasenia = document.getElementById("recuperarContrasenia")
